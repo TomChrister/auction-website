@@ -3,6 +3,7 @@ module.exports = {
     content: [
         './index.html',
         './account/login.html',
+        './profile/index.html',
         './src/**/*.{html,js}'
     ],
     theme: {
