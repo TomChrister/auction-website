@@ -1,3 +1,73 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.listing-card {
+    background-color: #a5a1a1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    padding: 8px;
+}
+
+.listing-card p {
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+.listing-card:hover {
+    transform: scale(1.03);
+}
+
+.listing-card figure {
+    margin: 0;
+    padding: 0;
+}
+
+.listing-card img {
+    width: 100%;
+    height: 152px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+}
+
+.listing-body {
+    padding: 1rem;
+}
+
+.listing-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 9999px;
+}
+
+.new-badge {
+    background-color: #4f46e5;
+    color: #fff;
+}
+
+.category-badge {
+    background-color: #e5e7eb;
+    color: #4b5563;
+    border: 1px solid #d1d5db;
+    margin-right: 0.5rem;
+}
+
+.listing-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+

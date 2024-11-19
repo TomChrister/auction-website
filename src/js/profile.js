@@ -1,39 +1,84 @@
-const apiKey = import.meta.env.VITE_API_KEY;
+import { fetchProfile, updateAvatar, fetchListingsByUser } from './api/index.js';
 
-// fetching profile data
-async function fetchProfile() {
-    const name = sessionStorage.getItem('name');
-    const token = sessionStorage.getItem('accessToken');
-    const url = `https://v2.api.noroff.dev/auction/profiles/${name}`;
+// displaying profile data
+async function displayProfile() {
+    const profile = await fetchProfile();
 
-    if (!token) {
-        console.error('No access token found in session storage.');
-        return null;
-    }
+    if (profile) {
+        document.getElementById("name").textContent = profile.name;
+        document.getElementById("email").textContent = profile.email;
+        document.getElementById("nameHeader").textContent = profile.name;
+        document.getElementById("creditsHeader").textContent = `Credits: ${profile.credits}`;
+        document.getElementById("credits").textContent = `Credits: ${profile.credits}`;
+        document.getElementById("listings").textContent = `Listings: ${profile._count.listings}`;
+        document.getElementById("wins").textContent = `Wins: ${profile._count.wins}`;
 
-    try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'X-Noroff-API-KEY': apiKey,
-            },
-        });
+        const avatar = document.getElementById("avatar");
+        avatar.src = profile.avatar.url;
 
-        if (!response.ok) {
-            console.error("Response details:", response);
-            throw new Error(`HTTP error! Status: ${response.status}`);
+        const avatarImage = document.querySelector(".avatar .avatar-image");
+        if (avatar) {
+            avatarImage.src = profile.avatar.url;
         }
-
-        const data = await response.json();
-        return data.data;
-    } catch (error) {
-        console.error('Error fetching profile data:', error.message);
-        return null;
     }
 }
+displayProfile();
 
-// Login and logout functions
+// displaying listings by user
+async function displayListings() {
+    const listings = await fetchListingsByUser();
+
+    if (listings) {
+        const listingsContainer = document.getElementById("listingsContainer");
+        const listingTemplate = document.getElementById("listingTemplate");
+
+        listings.forEach(listing => {
+            const listingElement = listingTemplate.cloneNode(true);
+            listingElement.classList.remove('hidden');
+
+            // Image
+            const image = listingElement.querySelector("#listingImage");
+            if (listing.media && listing.media.length > 0) {
+                image.src = listing.media[0].url;
+                image.alt = listing.media[0].alt;
+            }
+
+            const title = listingElement.querySelector("#listingTitle");
+            title.textContent = listing.title;
+
+            const description = listingElement.querySelector("#listingDescription");
+            description.textContent = listing.description;
+
+            const category = listingElement.querySelector("#category");
+            category.textContent = listing.tags || "Uncategorized";
+
+            listingsContainer.appendChild(listingElement);
+        });
+    }
+}
+displayListings();
+
+// modal for updating avatar
+document.getElementById('editAvatarBtn').addEventListener('click', () => {
+    document.getElementById('editAvatarModal').style.display = 'block';
+});
+
+document.getElementById('cancelAvatarBtn').addEventListener('click', () => {
+    document.getElementById('editAvatarModal').style.display = 'none';
+});
+
+document.getElementById('submitAvatarBtn').addEventListener('click', () => {
+    const avatarUrl = document.getElementById('avatarUrlInput').value;
+
+    if (avatarUrl) {
+        updateAvatar(avatarUrl);
+        document.getElementById('editAvatarModal').style.display = 'none';
+    } else {
+        alert('Please enter a valid avatar URL.');
+    }
+});
+
+// login and logout functions
 function loggedIn() {
     const accessToken = sessionStorage.getItem('accessToken');
     return accessToken !== null;
@@ -66,89 +111,3 @@ if (logoutBtn) {
         }
     });
 }
-
-// Update avatar
-async function updateAvatar(avatarUrl) {
-    const name = sessionStorage.getItem('name');
-    const token = sessionStorage.getItem('accessToken');
-
-    if (!token || !name) {
-        console.error('No access token or name found in session storage.');
-        return;
-    }
-
-    const apiUrl = `https://v2.api.noroff.dev/auction/profiles/${name}`;
-    const updatedProfileData = {
-        avatar: {
-            url: avatarUrl,
-            alt: '',
-        },
-    };
-
-    try {
-        const response = await fetch(apiUrl, {
-            method: 'PUT',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'X-Noroff-API-KEY': apiKey,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updatedProfileData),
-        });
-
-        if (!response.ok) {
-            console.error("Response details:", response);
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const updatedData = await response.json();
-        console.log('Avatar updated successfully:', updatedData);
-        alert('Avatar updated!');
-    } catch (error) {
-        console.error('Error updating avatar:', error.message);
-    }
-}
-
-// Modal for editing avatar
-document.getElementById('editAvatarBtn').addEventListener('click', () => {
-    document.getElementById('editAvatarModal').style.display = 'block';
-});
-
-document.getElementById('cancelAvatarBtn').addEventListener('click', () => {
-    document.getElementById('editAvatarModal').style.display = 'none';
-});
-
-document.getElementById('submitAvatarBtn').addEventListener('click', () => {
-    const avatarUrl = document.getElementById('avatarUrlInput').value;
-
-    if (avatarUrl) {
-        updateAvatar(avatarUrl);
-        document.getElementById('editAvatarModal').style.display = 'none';
-    } else {
-        alert('Please enter a valid avatar URL.');
-    }
-});
-
-// displaying profile data
-async function displayProfile() {
-    const profile = await fetchProfile();
-
-    if (profile) {
-        document.getElementById("name").textContent = profile.name;
-        document.getElementById("email").textContent = profile.email;
-        document.getElementById("nameHeader").textContent = profile.name;
-        document.getElementById("creditsHeader").textContent = `Credits: ${profile.credits}`;
-        document.getElementById("credits").textContent = `Credits: ${profile.credits}`;
-        document.getElementById("listings").textContent = `Listings: ${profile._count.listings}`;
-        document.getElementById("wins").textContent = `Wins: ${profile._count.wins}`;
-
-        const avatar = document.getElementById("avatar");
-        avatar.src = profile.avatar.url;
-
-        const avatarImage = document.querySelector(".avatar .avatar-image");
-        if (avatar) {
-            avatarImage.src = profile.avatar.url;
-        }
-    }
-}
-displayProfile();
