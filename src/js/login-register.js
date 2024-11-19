@@ -2,7 +2,7 @@
 const apiLogin = 'https://v2.api.noroff.dev/auth/login';
 const apiRegister = 'https://v2.api.noroff.dev/auth/register';
 
-// Elements
+// elements
 const loginEmail = document.getElementById('loginEmail');
 const loginPassword = document.getElementById('loginPassword');
 const registerUsername = document.getElementById('registerUsername');
@@ -14,7 +14,7 @@ const registerFormElement = document.getElementById('register');
 const loginBtn = document.getElementById('loginBtn');
 const registerBtn = document.getElementById('registerBtn');
 
-// Login function
+// login function
 loginBtn.addEventListener('click', async function () {
     const mailValue = loginEmail.value;
     const pwdValue = loginPassword.value;
@@ -46,7 +46,7 @@ loginBtn.addEventListener('click', async function () {
     }
 });
 
-// Register Function
+// register Function
 registerBtn.addEventListener('click', async function () {
     const userName = registerUsername.value;
     const email = registerEmail.value;
@@ -76,7 +76,7 @@ registerBtn.addEventListener('click', async function () {
     }
 });
 
-// Toggle between forms
+// toggle between forms
 const registerLink = document.getElementById('registerLink');
 const loginLink = document.getElementById('loginLink');
 
