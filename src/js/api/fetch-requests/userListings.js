@@ -27,10 +27,8 @@ export async function fetchListingsByUser() {
 
         const data = await response.json();
         return data.data;
-
     } catch (error) {
         console.error('Error fetching fetch-requests data:', error.message);
         return null;
     }
 }
-fetchListingsByUser();

@@ -21,6 +21,8 @@ async function displayProfile() {
             avatarImage.src = profile.avatar.url;
         }
     }
+
+
 }
 displayProfile();
 

@@ -4,8 +4,8 @@ export{ fetchProfile }
 import { updateAvatar } from './fetch-requests/updateAvatar.js';
 export { updateAvatar }
 
-import { fetchListingsByUser } from './fetch-requests/fetchListings.js';
+import { fetchListingsByUser } from './fetch-requests/userListings.js';
 export { fetchListingsByUser }
 
-import { fetchAllListings } from './fetch-requests/fetchAllListings.js';
-export { fetchAllListings }
+import { feedListings } from './fetch-requests/feedListings.js';
+export { feedListings }

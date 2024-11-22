@@ -10,7 +10,7 @@ export default defineConfig({
             input: {
                 main: resolve (__dirname, 'index.html'),
                 login: resolve (__dirname, 'account/login.html'),
-                profile: resolve (__dirname, 'fetch-requests/index.html'),
+                profile: resolve (__dirname, 'profile/index.html'),
             },
         },
     },

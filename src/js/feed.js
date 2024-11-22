@@ -1,4 +1,4 @@
-import { fetchAllListings } from './api/index.js';
+import { feedListings } from './api/index.js';
 
 let currentPage = 0;
 const listingsPerPage = 12;
@@ -46,12 +46,12 @@ function loadMoreListings() {
     currentPage++;
     displayListings();
 }
-fetchAllListings();
+feedListings();
 
-// get data from fetchAllListings
+// get data from feedListings
 async function initializeListings() {
     try {
-        allListings = await fetchAllListings();
+        allListings = await feedListings();
         displayListings();
     } catch (error) {
         console.error('Error initializing listings:', error.message);

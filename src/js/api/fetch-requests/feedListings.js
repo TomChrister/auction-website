@@ -1,5 +1,5 @@
 // fetch all listings from all users
-export async function fetchAllListings() {
+export async function feedListings() {
     const url = `https://v2.api.noroff.dev/auction/listings?sort=created`;
 
     try {
