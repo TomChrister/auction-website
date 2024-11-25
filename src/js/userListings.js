@@ -1,4 +1,4 @@
-// fetch listings by user/id
+// fetch listings by user/name
 const apiKey = import.meta.env.VITE_API_KEY;
 
 export async function fetchListingsByUser() {
@@ -21,7 +21,7 @@ export async function fetchListingsByUser() {
         });
 
         if (!response.ok) {
-            console.error("Response details:", response);
+            console.error('Response details:', response);
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 

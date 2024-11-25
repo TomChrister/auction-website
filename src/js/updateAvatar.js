@@ -30,7 +30,7 @@ export async function updateAvatar(avatarUrl) {
         });
 
         if (!response.ok) {
-            console.error("Response details:", response);
+            console.error('Response details:', response);
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 

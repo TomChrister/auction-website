@@ -1,5 +1,5 @@
 import '../styles/input.css';
-import { fetchProfile } from './api/index.js';
+import { profileData } from './index.js';
 
 // login and logout functions
 function loggedIn() {
@@ -14,7 +14,7 @@ function updateLogin() {
         loginAnchor.href = 'index.html';
     } else {
         loginAnchor.textContent = 'Login';
-        loginAnchor.href = 'account/login.html';
+        loginAnchor.href = 'account/auth.html';
     }
 }
 updateLogin()
@@ -37,13 +37,13 @@ if (logoutBtn) {
 
 // displaying fetch-requests data
 async function displayProfile() {
-    const profile = await fetchProfile();
+    const profile = await profileData();
 
     if (profile) {
-        document.getElementById("name").textContent = profile.name;
-        document.getElementById("credits").textContent = `Credits: ${profile.credits}`;
+        document.getElementById('name').textContent = profile.name;
+        document.getElementById('credits').textContent = `Credits: ${profile.credits}`;
 
-        const avatar = document.getElementById("avatar");
+        const avatar = document.getElementById('avatar');
         avatar.src = profile.avatar.url;
         avatar.alt = profile.avatar.alt;
     }

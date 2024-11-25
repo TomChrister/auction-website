@@ -1,22 +1,22 @@
-import { fetchProfile, updateAvatar, fetchListingsByUser } from './api/index.js';
+import { profileData, updateAvatar, fetchListingsByUser } from './index.js';
 
 // displaying profile data
 async function displayProfile() {
-    const profile = await fetchProfile();
+    const profile = await profileData();
 
     if (profile) {
-        document.getElementById("name").textContent = profile.name;
-        document.getElementById("email").textContent = profile.email;
-        document.getElementById("nameHeader").textContent = profile.name;
-        document.getElementById("creditsHeader").textContent = `Credits: ${profile.credits}`;
-        document.getElementById("credits").textContent = `Credits: ${profile.credits}`;
-        document.getElementById("listings").textContent = `Listings: ${profile._count.listings}`;
-        document.getElementById("wins").textContent = `Wins: ${profile._count.wins}`;
+        document.getElementById('name').textContent = profile.name;
+        document.getElementById('email').textContent = profile.email;
+        document.getElementById('nameHeader').textContent = profile.name;
+        document.getElementById('creditsHeader').textContent = `Credits: ${profile.credits}`;
+        document.getElementById('credits').textContent = `Credits: ${profile.credits}`;
+        document.getElementById('listings').textContent = `Listings: ${profile._count.listings}`;
+        document.getElementById('wins').textContent = `Wins: ${profile._count.wins}`;
 
-        const avatar = document.getElementById("avatar");
+        const avatar = document.getElementById('avatar');
         avatar.src = profile.avatar.url;
 
-        const avatarImage = document.querySelector(".avatar .avatar-image");
+        const avatarImage = document.querySelector('.avatar .avatar-image');
         if (avatar) {
             avatarImage.src = profile.avatar.url;
         }
@@ -31,28 +31,28 @@ async function displayListings() {
     const listings = await fetchListingsByUser();
 
     if (listings) {
-        const listingsContainer = document.getElementById("listingsContainer");
-        const listingTemplate = document.getElementById("listingTemplate");
+        const listingsContainer = document.getElementById('listingsContainer');
+        const listingTemplate = document.getElementById('listingTemplate');
 
         listings.forEach(listing => {
             const listingElement = listingTemplate.cloneNode(true);
             listingElement.classList.remove('hidden');
 
             // Image
-            const image = listingElement.querySelector("#listingImage");
+            const image = listingElement.querySelector('#listingImage');
             if (listing.media && listing.media.length > 0) {
                 image.src = listing.media[0].url;
                 image.alt = listing.media[0].alt;
             }
 
-            const title = listingElement.querySelector("#listingTitle");
+            const title = listingElement.querySelector('#listingTitle');
             title.textContent = listing.title;
 
-            const description = listingElement.querySelector("#listingDescription");
+            const description = listingElement.querySelector('#listingDescription');
             description.textContent = listing.description;
 
-            const category = listingElement.querySelector("#category");
-            category.textContent = listing.tags || "Uncategorized";
+            const category = listingElement.querySelector('#category');
+            category.textContent = listing.tags || 'Uncategorized';
 
             listingsContainer.appendChild(listingElement);
         });
@@ -93,7 +93,7 @@ function updateLogin() {
         loginAnchor.href = '../index.html';
     } else {
         loginAnchor.textContent = 'Login';
-        loginAnchor.href = '../account/login.html';
+        loginAnchor.href = '../account/auth.html';
     }
 }
 updateLogin();

@@ -11,14 +11,16 @@ export async function feedListings() {
         });
 
         if (!response.ok) {
-            console.error("Response details:", response);
+            console.error('Response details:', response);
             throw new Error(`HTTP error ${response.status}`);
         }
 
         const { data } = await response.json();
         return data;
+
     } catch (error) {
         console.error('Error fetching listings:', error.message);
         throw error;
     }
 }
+

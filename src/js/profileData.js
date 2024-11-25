@@ -1,7 +1,7 @@
 // fetch fetch-requests data
 const apiKey = import.meta.env.VITE_API_KEY;
 
-export async function fetchProfile() {
+export async function profileData() {
     const name = sessionStorage.getItem('name');
     const token = sessionStorage.getItem('accessToken');
     const url = `https://v2.api.noroff.dev/auction/profiles/${name}`;
@@ -21,7 +21,7 @@ export async function fetchProfile() {
         });
 
         if (!response.ok) {
-            console.error("Response details:", response);
+            console.error('Response details:', response);
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
@@ -32,3 +32,4 @@ export async function fetchProfile() {
         return null;
     }
 }
+
