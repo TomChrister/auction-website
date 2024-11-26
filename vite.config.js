@@ -11,6 +11,7 @@ export default defineConfig({
                 main: resolve (__dirname, 'index.html'),
                 login: resolve (__dirname, 'account/auth.html'),
                 profile: resolve (__dirname, 'profile/index.html'),
+                create: resolve (__dirname, 'profile/create.html'),
             },
         },
     },

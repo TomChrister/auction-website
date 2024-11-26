@@ -1,10 +1,11 @@
-import { feedListings } from './feedListings.js';
+import { feedListings } from '../../api/listings/feedListings.js';
 
+// pagination
 let currentPage = 0;
 const listingsPerPage = 12;
 let allListings = [];
 
-// display listings
+// display all listings
 function displayListings() {
     const container = document.getElementById('listingsContainer');
     const start = currentPage * listingsPerPage;

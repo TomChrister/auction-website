@@ -4,6 +4,7 @@ module.exports = {
         './index.html',
         './account/auth.html',
         './profile/index.html',
+        './profile/create.html',
         './src/**/*.{html,js}',
     ],
     theme: {

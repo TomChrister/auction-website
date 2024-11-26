@@ -1,5 +1,5 @@
-// fetch fetch-requests data
-const apiKey = import.meta.env.VITE_API_KEY;
+// fetch profile data
+import { authHeaders } from '../headers.js';
 
 export async function profileData() {
     const name = sessionStorage.getItem('name');
@@ -14,10 +14,7 @@ export async function profileData() {
     try {
         const response = await fetch(url, {
             method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'X-Noroff-API-KEY': apiKey,
-            },
+            headers: authHeaders()
         });
 
         if (!response.ok) {
@@ -32,4 +29,3 @@ export async function profileData() {
         return null;
     }
 }
-

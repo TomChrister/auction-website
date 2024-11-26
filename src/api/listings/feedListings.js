@@ -1,13 +1,12 @@
 // fetch all listings from all users
-export async function feedListings() {
-    const url = `https://v2.api.noroff.dev/auction/listings?sort=created`;
+import { API_BASE_LISTINGS } from '../contants.js';
+import { defaultHeaders } from '../headers.js';
 
+export async function feedListings() {
     try {
-        const response = await fetch(url, {
+        const response = await fetch(`${API_BASE_LISTINGS}?sort=created`, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: defaultHeaders,
         });
 
         if (!response.ok) {
@@ -23,4 +22,3 @@ export async function feedListings() {
         throw error;
     }
 }
-

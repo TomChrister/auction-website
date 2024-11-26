@@ -1,6 +1,9 @@
-import { profileData, updateAvatar, fetchListingsByUser } from './index.js';
+import { updateLogin, logoutHandler } from '../auth/authHelpers.js';
+import { fetchListingsByUser } from '../../api/listings/userListings.js';
+import { profileData } from '../../api/profile/profileData.js';
+import { updateAvatar } from '../../api/profile/updateAvatar.js';
 
-// displaying profile data
+// display profile data
 async function displayProfile() {
     const profile = await profileData();
 
@@ -21,12 +24,10 @@ async function displayProfile() {
             avatarImage.src = profile.avatar.url;
         }
     }
-
-
 }
 displayProfile();
 
-// displaying listings by user
+// display listings by user
 async function displayListings() {
     const listings = await fetchListingsByUser();
 
@@ -38,7 +39,6 @@ async function displayListings() {
             const listingElement = listingTemplate.cloneNode(true);
             listingElement.classList.remove('hidden');
 
-            // Image
             const image = listingElement.querySelector('#listingImage');
             if (listing.media && listing.media.length > 0) {
                 image.src = listing.media[0].url;
@@ -80,36 +80,6 @@ document.getElementById('submitAvatarBtn').addEventListener('click', () => {
     }
 });
 
-// login and logout functions
-function loggedIn() {
-    const accessToken = sessionStorage.getItem('accessToken');
-    return accessToken !== null;
-}
-
-function updateLogin() {
-    const loginAnchor = document.getElementById('loginAnchor');
-    if (loggedIn()) {
-        loginAnchor.textContent = 'Log out';
-        loginAnchor.href = '../index.html';
-    } else {
-        loginAnchor.textContent = 'Login';
-        loginAnchor.href = '../account/auth.html';
-    }
-}
+// call the updated login/logout functions
 updateLogin();
-
-function logOut() {
-    event.preventDefault();
-    sessionStorage.removeItem('accessToken');
-    sessionStorage.removeItem('name');
-    window.location.href = '../index.html';
-}
-
-const logoutBtn = document.getElementById('loginAnchor');
-if (logoutBtn) {
-    logoutBtn.addEventListener('click', function (event) {
-        if (loggedIn()) {
-            logOut(event)
-        }
-    });
-}
+logoutHandler();

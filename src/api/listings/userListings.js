@@ -1,10 +1,16 @@
 // fetch listings by user/name
-const apiKey = import.meta.env.VITE_API_KEY;
+import { API_BASE_AUCTION, API_KEY } from '../contants.js';
+import { authHeaders } from '../headers.js';
 
 export async function fetchListingsByUser() {
     const name = sessionStorage.getItem('name');
     const token = sessionStorage.getItem('accessToken');
-    const url = `https://v2.api.noroff.dev/auction/profiles/${name}/listings`;
+    const url = `${API_BASE_AUCTION}/profiles/${name}/listings`;
+
+    if (!name) {
+        console.error('No name found in session storage.');
+        return null;
+    }
 
     if (!token) {
         console.error('No access token found in session storage.');
@@ -14,10 +20,7 @@ export async function fetchListingsByUser() {
     try {
         const response = await fetch(url, {
             method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'X-Noroff-API-KEY': apiKey,
-            },
+            headers: authHeaders(),
         });
 
         if (!response.ok) {
