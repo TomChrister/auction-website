@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feed</title>
     <link href="src/styles/output.css" rel="stylesheet">
-    <script src="src/js/main.js" type="module" defer></script>
-    <script src="src/js/feed.js" type="module" defer></script>
+    <script src="src/main.js" type="module" defer></script>
+    <script src="src/components/listings/feed.js" type="module" defer></script>
 </head>
 <body>
 
@@ -35,8 +35,8 @@
                 <li>
                     <a href="profile/index.html" class="justify-between">Profile<span class="flex py-1 px-3 text-sm text-green-300 rounded-full border border-green-300 leading-[0.75rem] animate-pulse">New</span></a>
                 </li>
-                <li><a>Settings</a></li>
-                <li><a id="loginAnchor" href="account/login.html">Logout</a></li>
+                <li><a href="profile/create.html">Create listing</a></li>
+                <li><a id="loginAnchor" href="account/auth.html">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -77,6 +77,7 @@
         <p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
     </aside>
 </footer>
+
 
 </body>
 </html>

@@ -1,7 +1,7 @@
-// fetch fetch-requests data
-const apiKey = import.meta.env.VITE_API_KEY;
+// fetch profile data
+import { authHeaders } from '../headers.js';
 
-export async function fetchProfile() {
+export async function profileData() {
     const name = sessionStorage.getItem('name');
     const token = sessionStorage.getItem('accessToken');
     const url = `https://v2.api.noroff.dev/auction/profiles/${name}`;
@@ -14,14 +14,11 @@ export async function fetchProfile() {
     try {
         const response = await fetch(url, {
             method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'X-Noroff-API-KEY': apiKey,
-            },
+            headers: authHeaders()
         });
 
         if (!response.ok) {
-            console.error("Response details:", response);
+            console.error('Response details:', response);
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 

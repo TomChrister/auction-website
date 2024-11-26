@@ -1,5 +1,5 @@
 // update avatar request
-const apiKey = import.meta.env.VITE_API_KEY;
+import { authHeaders } from '../headers.js';
 
 export async function updateAvatar(avatarUrl) {
     const name = sessionStorage.getItem('name');
@@ -21,22 +21,18 @@ export async function updateAvatar(avatarUrl) {
     try {
         const response = await fetch(apiUrl, {
             method: 'PUT',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'X-Noroff-API-KEY': apiKey,
-                'Content-Type': 'application/json',
-            },
+            headers: authHeaders(),
             body: JSON.stringify(updatedProfileData),
         });
 
         if (!response.ok) {
-            console.error("Response details:", response);
+            console.error('Response details:', response);
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const updatedData = await response.json();
         console.log('Avatar updated successfully:', updatedData);
-        alert('Avatar updated!');
+        window.location.reload();
     } catch (error) {
         console.error('Error updating avatar:', error.message);
     }

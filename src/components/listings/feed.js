@@ -1,10 +1,11 @@
-import { feedListings } from './api/index.js';
+import { feedListings } from '../../api/listings/feedListings.js';
 
+// pagination
 let currentPage = 0;
 const listingsPerPage = 12;
 let allListings = [];
 
-// display listings
+// display all listings
 function displayListings() {
     const container = document.getElementById('listingsContainer');
     const start = currentPage * listingsPerPage;
@@ -15,15 +16,15 @@ function displayListings() {
         const listingDiv = document.createElement('div');
         listingDiv.className = 'listing-card';
         listingDiv.innerHTML = `
-            <h2 class="text-xl font-medium capitalize">${listing.title}</h2>
-            <p class="capitalize"><strong>Description:</strong> ${truncateDescription(listing.description)}</p>
+            <h2 class='text-xl font-medium capitalize'>${listing.title}</h2>
+            <p class='capitalize'><strong>Description:</strong> ${truncateDescription(listing.description)}</p>
             <p><strong>Created:</strong> ${new Date(listing.created).toLocaleDateString()}</p>
             <p><strong>Ends At:</strong> ${new Date(listing.endsAt).toLocaleDateString()}</p>
             <p><strong>Number of Bids:</strong> ${listing._count.bids}</p>
             <p><strong>Tags:</strong> ${listing.tags.length > 0 ? listing.tags.join(', ') : 'No tags'}</p>
             <div> ${
             listing.media.length > 0
-                ? `<img src="${listing.media[0].url}" alt="${listing.media[0].alt || listing.title}" class="media-img">`
+                ? `<img src='${listing.media[0].url}' alt='${listing.media[0].alt || listing.title}' class='media-img'>`
                 : 'No media available'
         }</div>
         `;
@@ -40,13 +41,13 @@ function displayListings() {
         showMoreContainer.appendChild(showMoreButton);
     }
 }
+feedListings();
 
 // loads more listings - pagination
 function loadMoreListings() {
     currentPage++;
     displayListings();
 }
-feedListings();
 
 // get data from feedListings
 async function initializeListings() {
