@@ -1,4 +1,4 @@
-import {API_AUTH_KEY, API_REGISTER} from '../contants.js';
+import {API_AUTH_KEY, API_REGISTER} from '../../utils/contants.js';
 
 export async function registerUser(registerData) {
     try {

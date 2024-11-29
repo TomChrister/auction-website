@@ -1,5 +1,5 @@
 // fetch profile data
-import { authHeaders } from '../headers.js';
+import { authHeaders } from '../../utils/headers.js';
 
 export async function profileData() {
     const name = sessionStorage.getItem('name');

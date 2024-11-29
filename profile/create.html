@@ -5,37 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create listing</title>
     <link href="/src/styles/input.css" rel="stylesheet">
-    <script src="/src/components/listings/create.js" type="module" defer></script>
+    <script src="/src/ui/listings/create.js" type="module" defer></script>
 </head>
 <body>
 
-<div class="navbar bg-blue-500">
-    <div class="flex-1">
-        <a href="../index.html" class="btn btn-ghost text-xl text-white">Auction</a>
-    </div>
-    <div class="flex-none">
-        <div class="dropdown dropdown-end">
-            <div id="profileHeader">
-                <p id="name" class="text-white"></p>
-                <p id="credits" class="text-white"></p>
-            </div>
+<header>
+    <div class="navbar bg-blue-500">
+        <div class="flex-1">
+            <a href="../index.html" class="btn btn-ghost text-xl text-white">Auction</a>
         </div>
-        <div class="dropdown dropdown-end">
-            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                <div class="w-10 rounded-full">
-                    <img id="avatar" class="avatar-image" src="" alt="User Avatar"/>
+        <div class="flex-none">
+            <div class="dropdown dropdown-end">
+                <div id="profileHeader">
+                    <p id="name" class="text-white"></p>
+                    <p id="credits" class="text-white"></p>
                 </div>
             </div>
-            <ul tabindex="0" class="menu menu-sm dropdown-content bg-gray-600 rounded-box z-[1] mt-3 w-52 p-2 shadow text-white">
-                <li>
-                    <a href="./index.html" class="justify-between">Profile<span class="flex py-1 px-3 text-sm text-green-300 rounded-full border border-green-300 leading-[0.75rem] animate-pulse">New</span></a>
-                </li>
-                <li><a href="create.html">Create listing</a></li>
-                <li><a id="loginAnchor" href="index.html">Logout</a></li>
-            </ul>
+            <div class="dropdown dropdown-end">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                    <div class="w-10 rounded-full">
+                        <img id="avatar" class="avatar-image" src="" alt="User Avatar"/>
+                    </div>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content bg-gray-600 rounded-box z-[1] mt-3 w-52 p-2 shadow text-white">
+                    <li>
+                        <a href="./index.html" class="justify-between">Profile<span class="flex py-1 px-3 text-sm text-green-300 rounded-full border border-green-300 leading-[0.75rem] animate-pulse">New</span></a>
+                    </li>
+                    <li><a href="create.html">Create listing</a></li>
+                    <li><a id="loginAnchor" href="index.html">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+</header>
 
 <h1 class="text-xl">Create listing</h1>
 

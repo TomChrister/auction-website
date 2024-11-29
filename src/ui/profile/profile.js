@@ -39,6 +39,9 @@ async function displayListings() {
             const listingElement = listingTemplate.cloneNode(true);
             listingElement.classList.remove('hidden');
 
+            const listingLink = listingElement.querySelector('#listingLink');
+            listingLink.href = `../listing/singleListing.html?id=${listing.id}`;
+
             const image = listingElement.querySelector('#listingImage');
             if (listing.media && listing.media.length > 0) {
                 image.src = listing.media[0].url;

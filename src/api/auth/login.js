@@ -1,4 +1,4 @@
-import {API_KEY, API_LOGIN} from '../contants.js';
+import {API_KEY, API_LOGIN} from '../../utils/contants.js';
 
 export async function loginUser(email, password) {
     const postData = { email, password };

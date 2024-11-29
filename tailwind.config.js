@@ -5,6 +5,7 @@ module.exports = {
         './account/auth.html',
         './profile/index.html',
         './profile/create.html',
+        './singeListing.html',
         './src/**/*.{html,js}',
     ],
     theme: {

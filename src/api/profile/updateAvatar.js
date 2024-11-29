@@ -1,5 +1,5 @@
 // update avatar request
-import { authHeaders } from '../headers.js';
+import { authHeaders } from '../../utils/headers.js';
 
 export async function updateAvatar(avatarUrl) {
     const name = sessionStorage.getItem('name');

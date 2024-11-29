@@ -1,6 +1,6 @@
 // fetch listings by user/name
-import { API_BASE_AUCTION, API_KEY } from '../contants.js';
-import { authHeaders } from '../headers.js';
+import { API_BASE_AUCTION } from '../../utils/contants.js';
+import { authHeaders } from '../../utils/headers.js';
 
 export async function fetchListingsByUser() {
     const name = sessionStorage.getItem('name');
