@@ -1,3 +1,4 @@
+// main feed page
 import { feedListings } from '../../api/listings/feedListings.js';
 
 // pagination
@@ -16,9 +17,9 @@ function displayListings() {
         const listingDiv = document.createElement('div');
         listingDiv.className = 'listing-card';
         listingDiv.innerHTML = `
+            <a href="../listing/singleListing.html?id=${listing.id}">
             <h2 class='text-xl font-medium capitalize'>${listing.title}</h2>
             <p class='capitalize'><strong>Description:</strong> ${truncateDescription(listing.description)}</p>
-            <p><strong>Created:</strong> ${new Date(listing.created).toLocaleDateString()}</p>
             <p><strong>Ends At:</strong> ${new Date(listing.endsAt).toLocaleDateString()}</p>
             <p><strong>Number of Bids:</strong> ${listing._count.bids}</p>
             <p><strong>Tags:</strong> ${listing.tags.length > 0 ? listing.tags.join(', ') : 'No tags'}</p>
@@ -26,7 +27,8 @@ function displayListings() {
             listing.media.length > 0
                 ? `<img src='${listing.media[0].url}' alt='${listing.media[0].alt || listing.title}' class='media-img'>`
                 : 'No media available'
-        }</div>
+        }</div> 
+         </a>
         `;
         container.appendChild(listingDiv);
     });

@@ -1,6 +1,6 @@
 // create listings
-import { API_BASE_LISTINGS } from '../contants.js';
-import { authHeaders } from '../headers.js';
+import { API_BASE_LISTINGS } from '../../utils/contants.js';
+import { authHeaders } from '../../utils/headers.js';
 
 export async function createListing(listingData) {
     try {

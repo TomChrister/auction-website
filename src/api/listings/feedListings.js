@@ -1,6 +1,6 @@
 // fetch all listings from all users
-import { API_BASE_LISTINGS } from '../contants.js';
-import { defaultHeaders } from '../headers.js';
+import { API_BASE_LISTINGS } from '../../utils/contants.js';
+import { defaultHeaders } from '../../utils/headers.js';
 
 export async function feedListings() {
     try {
