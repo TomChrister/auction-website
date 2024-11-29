@@ -7,7 +7,7 @@ const listingsPerPage = 12;
 let allListings = [];
 
 // display all listings
-function displayListings() {
+export function displayListings() {
     const container = document.getElementById('listingsContainer');
     const start = currentPage * listingsPerPage;
     const end = start + listingsPerPage;
