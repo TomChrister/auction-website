@@ -11,10 +11,10 @@ async function displayProfile() {
         document.getElementById('name').textContent = profile.name;
         document.getElementById('email').textContent = profile.email;
         document.getElementById('nameHeader').textContent = profile.name;
-        document.getElementById('creditsHeader').textContent = `Credits: ${profile.credits}`;
-        document.getElementById('credits').textContent = `Credits: ${profile.credits}`;
-        document.getElementById('listings').textContent = `Listings: ${profile._count.listings}`;
-        document.getElementById('wins').textContent = `Wins: ${profile._count.wins}`;
+        document.getElementById('creditsHeader').textContent = `${profile.credits}`;
+        document.getElementById('credits').textContent = `${profile.credits}`;
+        document.getElementById('listings').textContent = `${profile._count.listings}`;
+        document.getElementById('wins').textContent = `${profile._count.wins}`;
 
         const avatar = document.getElementById('avatar');
         avatar.src = profile.avatar.url;
@@ -51,12 +51,6 @@ async function displayListings() {
             const title = listingElement.querySelector('#listingTitle');
             title.textContent = listing.title;
 
-            const description = listingElement.querySelector('#listingDescription');
-            description.textContent = listing.description;
-
-            const category = listingElement.querySelector('#category');
-            category.textContent = listing.tags || 'Uncategorized';
-
             listingsContainer.appendChild(listingElement);
         });
     }
@@ -65,11 +59,15 @@ displayListings();
 
 // modal for updating avatar
 document.getElementById('editAvatarBtn').addEventListener('click', () => {
-    document.getElementById('editAvatarModal').style.display = 'block';
+    const modal = document.getElementById('editAvatarModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
 });
 
 document.getElementById('cancelAvatarBtn').addEventListener('click', () => {
-    document.getElementById('editAvatarModal').style.display = 'none';
+    const modal = document.getElementById('editAvatarModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
 });
 
 document.getElementById('submitAvatarBtn').addEventListener('click', () => {
@@ -77,7 +75,9 @@ document.getElementById('submitAvatarBtn').addEventListener('click', () => {
 
     if (avatarUrl) {
         updateAvatar(avatarUrl);
-        document.getElementById('editAvatarModal').style.display = 'none';
+        const modal = document.getElementById('editAvatarModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
     } else {
         alert('Please enter a valid avatar URL.');
     }

@@ -10,63 +10,46 @@
 <body>
 
 <header>
-    <div class="navbar bg-blue-500">
+    <div class="navbar px-8 py-4">
         <div class="flex-1">
-            <a href="../index.html" class="btn btn-ghost text-xl text-white">Auction</a>
-        </div>
-        <div class="flex-none">
-            <div class="dropdown dropdown-end">
-                <div id="profileHeader">
-                    <p id="name" class="text-white"></p>
-                    <p id="credits" class="text-white"></p>
-                </div>
-            </div>
-            <div class="dropdown dropdown-end">
-                <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                    <div class="w-10 rounded-full">
-                        <img id="avatar" class="avatar-image" src="" alt="User Avatar"/>
-                    </div>
-                </div>
-                <ul tabindex="0" class="menu menu-sm dropdown-content bg-gray-600 rounded-box z-[1] mt-3 w-52 p-2 shadow text-white">
-                    <li>
-                        <a href="./index.html" class="justify-between">Profile<span class="flex py-1 px-3 text-sm text-green-300 rounded-full border border-green-300 leading-[0.75rem] animate-pulse">New</span></a>
-                    </li>
-                    <li><a href="create.html">Create listing</a></li>
-                    <li><a id="loginAnchor" href="index.html">Logout</a></li>
-                </ul>
-            </div>
+            <a href="../index.html" class="btn btn-neutral text-xl text-white">
+                <p class="font-normal font-parkinsans">BidWise</p>
+            </a>
         </div>
     </div>
 </header>
 
-<h1 class="text-xl">Create listing</h1>
+<div class="mx-8 sm:w-[36rem] flex justify-center flex-col">
+    <h1 class="text-xl py-3">Create listing</h1>
 
-<form id="createForm">
-    <label class="input input-bordered flex items-center gap-2">
-        Title
-        <input id="title" type="text" class="grow" placeholder="Title" />
-    </label>
+    <form id="createForm" class="flex flex-col gap-3">
+        <label class="input input-bordered input-info flex items-center gap-2">
+            Title
+            <input id="title" type="text" class="grow" placeholder="Title"/>
+        </label>
 
-    <label for="description"></label>
-    <textarea id="description" class="textarea textarea-info" placeholder="Bio"></textarea>
+        <label for="description" class="flex">
+            <textarea id="description" class="textarea textarea-info w-full" placeholder="Bio"></textarea>
+        </label>
 
-    <label id="tags" class="input input-bordered flex items-center gap-2">
-        Tags
-        <input type="text" class="grow" placeholder="Tags" />
-    </label>
+        <label id="tags" class="input input-bordered input-info flex items-center gap-2">
+            Tags
+            <input type="text" class="grow" placeholder="Tags"/>
+        </label>
 
-    <label id="media" class="input input-bordered flex items-center gap-2">
-        Image URL
-        <input type="text" class="grow" placeholder="URL" />
-    </label>
+        <label id="media" class="input input-bordered input-info flex items-center gap-2">
+            Image URL
+            <input type="text" class="grow" placeholder="URL link to image"/>
+        </label>
 
-    <label id="endsAt" class="input input-bordered flex items-center gap-2">
-        <input type="datetime-local" class="grow" placeholder="Ends at" />
-        <span class="badge badge-info">Ends at:</span>
-    </label>
+        <label id="endsAt" class="input input-bordered input-info flex items-center gap-2">
+            <input type="datetime-local" class="grow" placeholder="Ends at"/>
+            <span class="flex justify-center p-1 rounded-[20px] w-[76px] h-[26px] items-center text-white badge-info">Ends at:</span>
+        </label>
 
-    <button class="btn" type="submit">Publish listing</button>
-</form>
+        <button class="btn btn-success text-white" type="submit">Publish listing</button>
+    </form>
+</div>
 
 </body>
 </html>

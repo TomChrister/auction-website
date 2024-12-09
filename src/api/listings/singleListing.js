@@ -26,6 +26,7 @@ export async function singleListing() {
         }
 
         const data = await response.json();
+        console.log(data);
         return data.data;
     } catch (error) {
         console.error('Error fetching data from server', error.message);
