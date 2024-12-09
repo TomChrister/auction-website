@@ -5,25 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link href="/src/styles/input.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
     <script src="/src/ui/profile/profile.js" type="module" defer></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
 
 <header>
-    <div class="navbar bg-blue-500">
+    <div class="navbar px-8 py-4">
         <div class="flex-1">
-            <a href="../index.html" class="btn btn-ghost text-xl text-white">Auction</a>
+            <a href="../index.html" class="btn btn-neutral text-xl text-white">
+                <p class="font-normal font-parkinsans">BidWise</p>
+            </a>
         </div>
-        <div class="flex-none">
+        <div class="flex-none gap-4 btn btn-neutral sm: pr-0">
             <div class="dropdown dropdown-end">
-                <div id="profileHeader">
+                <div id="profileHeader" class="flex flex-col items-baseline gap-1">
                     <p id="nameHeader" class="text-white"></p>
-                    <p id="creditsHeader" class="text-white"></p>
+                    <div class="flex">
+                        <p class="pr-1 text-accent">Credits:</p>
+                        <p id="creditsHeader" class="text-accent"></p>
+                    </div>
                 </div>
             </div>
             <div class="dropdown dropdown-end">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                    <div class="w-10 rounded-full">
+                    <div class="!flex justify-center items-center w-8 rounded-full">
                         <img class="avatar-image" src="" alt="User Avatar"/>
                     </div>
                 </div>
@@ -39,49 +48,81 @@
     </div>
 </header>
 
-<div class="flex flex-col items-center justify-center">
-    <h1 class="text-3xl font-bold">Profile</h1>
-    <div class="card card-compact bg-base-100 w-96 shadow-xl">
-        <figure>
-            <img src="" id="avatar" alt="User Avatar"/>
-        </figure>
-        <div class="card-body">
-            <h2 id="name"></h2>
-            <p id="email"></p>
-            <p id="credits"></p>
-            <p id="listings"></p>
-            <p id="wins"></p>
-            <button id="editAvatarBtn" class="btn">Edit avatar</button>
+<div class="flex justify-center sm:justify-between mt-6 px-5 font-montserrat sm:px-8 lg:px-52">
+    <h1 class="text-3xl font-bold">BidWise Account</h1>
+    <button class="btn btn-accent text-white hidden sm:flex">Logout</button>
+</div>
+<div class="px-8 sm:px-8 lg:px-52">
+    <div class="border-b-2 border-gray-400 my-4"></div>
+</div>
 
-            <div id="editAvatarModal" style="display:none;">
-                <label for="avatarUrlInput"></label>
-                <input type="text" id="avatarUrlInput" placeholder="Enter new avatar URL" />
-                <button id="submitAvatarBtn">Update avatar</button>
-                <button id="cancelAvatarBtn">Cancel</button>
+<div class="flex flex-col justify-center px-5 pb-5 gap-7 font-montserrat md:flex-row md:gap-28 ">
+    <div class="flex flex-col gap-4">
+        <img class="rounded-full w-40 h-40 object-cover self-center" src="" id="avatar" alt="User Avatar"/>
+        <p class="font-semibold" id="email"></p>
+        <button id="editAvatarBtn" class="btn btn-info text-white sm:w-60">Edit avatar</button>
+        <div id="editAvatarModal" class="hidden flex-col items-start gap-2">
+            <label for="avatarUrlInput"></label>
+            <input class="border border-info rounded-md px-2" type="text" id="avatarUrlInput" placeholder="Enter new avatar URL"/>
+            <button id="submitAvatarBtn" class="flex justify-center items-center bg-success h-8 w-32 rounded-md text-white">Update avatar</button>
+            <button id="cancelAvatarBtn" class="flex justify-center items-center bg-error h-8 w-32 rounded-md text-white">Cancel</button>
+        </div>
+    </div>
+    <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
+            <p class="text-3xl font-semibold">Account information</p>
+            <p>Manage your personal information, see your credits, listings and wins</p>
+        </div>
+
+        <div class="card-container grid grid-cols-2 gap-6">
+            <div class="flex justify-between p-2 border border-accent rounded-md h-20">
+                <div class="flex flex-col justify-between">
+                    <p class="font-semibold">Name</p>
+                    <p id="name"></p>
+                </div>
+                <i class="ph ph-user-circle text-accent text-2xl"></i>
+            </div>
+            <div class="flex justify-between p-2 border border-accent rounded-md h-20">
+                <div class="flex flex-col justify-between">
+                    <p class="font-semibold">Credits</p>
+                    <p id="credits"></p>
+                </div>
+                <i class="ph ph-coins text-accent text-2xl"></i>
+            </div>
+            <div class="flex justify-between p-2 border border-accent rounded-md h-20">
+                <div class="flex flex-col justify-between">
+                    <p class="font-semibold">Listings</p>
+                    <p id="listings"></p>
+                </div>
+                <i class="ph ph-article text-accent text-2xl"></i>
+            </div>
+            <div class="flex justify-between p-2 border border-accent rounded-md h-20">
+                <div class="flex flex-col justify-between">
+                    <p class="font-semibold">Wins</p>
+                    <p id="wins"></p>
+                </div>
+                <i class="ph ph-handshake text-accent text-2xl"></i>
             </div>
         </div>
     </div>
 </div>
 
-<h1 class="text-xl font-bold text-red-300">Your listings</h1>
-
-<div id="listingsContainer" class="flex flex-wrap gap-4 justify-center">
-    <div id="listingTemplate" class="card bg-base-100 w-96 shadow-xl hidden">
-        <a id="listingLink" href="#" class="block">
-            <figure>
-                <img id="listingImage" src="" alt="" class="w-full h-52 object-cover "/>
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">
-                    <span id="listingTitle"></span>
-                    <div id="listingBadge" class="badge badge-accent">NEW</div>
-                </h2>
-                <p id="listingDescription"></p>
-                <div class="card-actions justify-end">
-                    <div class="flex py-1 px-3 text-sm text-green-300 rounded-full border border-green-300 leading-[0.75rem] animate-pulse" id="category"></div>
+<div class="flex flex-col gap-4 pt-4 items-center p-2 font-montserrat">
+    <h1 class="text-xl font-bold text-red-300">Your listings</h1>
+    <div id="listingsContainer" class="grid grid-cols-1 gap-4 justify-center items-center sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+        <div id="listingTemplate" class="card bg-base-100 w-80 shadow-xl hidden">
+            <a id="listingLink" href="#" class="block">
+                <figure>
+                    <img id="listingImage" src="" alt="" class="w-full h-32 object-cover rounded-md"/>
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <span id="listingTitle"></span>
+                        <div id="listingBadge" class="badge badge-accent">NEW</div>
+                    </h2>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
     </div>
 </div>
 

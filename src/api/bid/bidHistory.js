@@ -14,7 +14,6 @@ export async function getBidderHistory() {
         });
 
         const data = await response.json();
-        console.log('Full API Response:', data);
 
         if (!response.ok) {
             throw new Error('Failed to fetch bidder history');

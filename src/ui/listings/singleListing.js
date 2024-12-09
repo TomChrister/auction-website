@@ -1,5 +1,6 @@
 import { updateLogin, logoutHandler } from '../auth/authHelpers.js';
 import { getBidderHistory } from '../../api/bid/bidHistory.js';
+import { startCountdown } from './countdownTimer.js';
 import { singleListing } from '../../api/listings/singleListing.js';
 import { profileData } from '../../api/profile/profileData.js';
 
@@ -9,38 +10,63 @@ async function displaySingleListing() {
 
     if (listing) {
         const container = document.getElementById('singleListingContainer');
+        if (!container) {
+            console.error('singleListingContainer not found in the DOM.');
+            return;
+        }
 
         const image = container.querySelector('#singleListingImage');
-        if (listing.media && listing.media.length > 0) {
-            image.src = listing.media[0].url;
-            image.alt = listing.media[0].alt || 'Listing image';
+        if (image) {
+            if (listing.media && listing.media.length > 0) {
+                image.src = listing.media[0].url;
+                image.alt = listing.media[0].alt || 'Listing image';
+            } else {
+                image.src = '../../../assets/images/defaultImage.png';
+                image.alt = 'DefaultImage';
+            }
         }
 
         const title = container.querySelector('#singleListingTitle');
-        title.textContent = `Title: ${listing.title.charAt(0).toUpperCase() + listing.title.slice(1).toLowerCase()}`;
+        title.textContent = listing.title.toUpperCase();
 
         const description = container.querySelector('#singleListingDescription');
-        description.textContent = `Description: ${listing.description.charAt(0).toUpperCase() + listing.description.slice(1).toLowerCase()}`;
-
-        const category = container.querySelector('#singleListingCategory');
-        category.textContent = `Category: ${listing.tags && listing.tags.length > 0 ? listing.tags.join(', ').charAt(0).toUpperCase() + listing.tags.join(', ').slice(1).toLowerCase() : 'Uncategorized'}`;
-
-        const created = container.querySelector('#created');
-        created.textContent = `Created: ${listing.created ? new Date(listing.created).toLocaleDateString() : 'No date available'}`;
+        description.innerHTML = `<span class="font-semibold">Description:</span> ${
+            listing.description.charAt(0).toUpperCase() + listing.description.slice(1).toLowerCase()
+        }`;
 
         const endsAt = container.querySelector('#endsAt');
-        endsAt.textContent = `Ends at: ${listing.endsAt ? new Date(listing.endsAt).toLocaleDateString() : 'No end date available'}`;
+        startCountdown(listing.endsAt, endsAt);
 
         const bids = container.querySelector('#bids');
-        bids.textContent = `Bids: ${listing._count.bids || 0}`;
+        bids.innerHTML = `<span class="font-semibold">Bids:</span> ${listing._count.bids || 0}`;
+
+
+        const tagsContainer = container.querySelector('#singleListingTags');
+        if (tagsContainer) {
+            if (listing.tags.length > 0) {
+                listing.tags.forEach((tag, index) => {
+                    const tagElement = document.createElement('span');
+                    tagElement.textContent = tag;
+                    tagElement.classList.add('font-normal');
+
+                    if (index < listing.tags.length - 1) {
+                        tagElement.textContent += ' - ';
+                    }
+                    tagsContainer.appendChild(tagElement);
+                });
+            } else {
+                const noTagsElement = document.createElement('span');
+                noTagsElement.textContent = 'No tags';
+                tagsContainer.appendChild(noTagsElement);
+            }
+        }
     } else {
         console.error('Failed to fetch or display the listing');
     }
 }
 displaySingleListing();
-singleListing();
 
-// display the bidder history
+// Display the bidder history
 async function displayBidderHistory() {
     const bidderHistory = await getBidderHistory();
 
@@ -49,8 +75,9 @@ async function displayBidderHistory() {
 
         bidderHistory.forEach(bid => {
             const listItem = document.createElement('li');
+            listItem.classList.add('flex', 'items-center', 'gap-2');
             listItem.innerHTML = `
-            <img src="${bid.bidder.avatar.url}" alt="${bid.bidder.avatar.alt}" width="50">
+            <img src="${bid.bidder.avatar.url}" alt="${bid.bidder.avatar.alt}" class="w-8 h-8 rounded-full">
             <strong>${bid.bidder.name}</strong> 
             bid amount: $${bid.amount} 
             on ${new Date(bid.created).toLocaleDateString()}
@@ -64,13 +91,13 @@ async function displayBidderHistory() {
 }
 displayBidderHistory()
 
-// display profile data in header
+// Display profile data in header
 async function displayProfile() {
     const profile = await profileData();
 
     if (profile) {
-        document.getElementById('name').textContent = profile.name;
-        document.getElementById('credits').textContent = `Credits: ${profile.credits}`;
+        document.getElementById('nameHeader').textContent = profile.name;
+        document.getElementById('creditsHeader').textContent = `Credits: ${profile.credits}`;
 
         const avatar = document.getElementById('avatar');
         avatar.src = profile.avatar.url;
@@ -79,6 +106,6 @@ async function displayProfile() {
 }
 displayProfile();
 
-// call the updated login/logout functions
+// Call the updated login/logout functions
 updateLogin();
 logoutHandler();

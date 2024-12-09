@@ -5,16 +5,28 @@ module.exports = {
         './account/auth.html',
         './profile/index.html',
         './profile/create.html',
-        './singeListing.html',
+        './listing/singleListing.html',
         './src/**/*.{html,js}',
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                parkinsans: ['Parkinsans', 'sans-serif'],
+                kantumruy: ['Kantumruy', 'sans-serif'],
+                montserrat: ['Montserrat', 'sans-serif'],
+            },
+        },
     },
     plugins: [
         require('daisyui'),
     ],
     daisyui: {
-        themes: [],
+        themes: false,
+        darkTheme: "light",
+        base: true,
+        styled: true,
+        utils: true,
+        prefix: "",
+        themeRoot: ":root",
     },
 };
