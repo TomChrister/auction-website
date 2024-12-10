@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await placeBid(amount);
             if (result) {
                 alert('Bid placed successfully!');
-                // update the number of bids
+                // Update the number of bids
                 const bidsCount = document.querySelector('#bids');
                 if (bidsCount) {
                     const currentCount = parseInt(bidsCount.textContent.split(': ')[1], 10) || 0;

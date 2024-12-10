@@ -1,9 +1,9 @@
-import { updateLogin, logoutHandler } from '../auth/authHelpers.js';
+import { updateLogin, logoutHandler, profileLogout } from '../auth/authHelpers.js';
 import { fetchListingsByUser } from '../../api/listings/userListings.js';
-import { profileData } from '../../api/profile/profileData.js';
 import { updateAvatar } from '../../api/profile/updateAvatar.js';
+import { profileData } from '../../api/profile/profileData.js';
 
-// display profile data
+// Display profile data
 async function displayProfile() {
     const profile = await profileData();
 
@@ -27,12 +27,13 @@ async function displayProfile() {
 }
 displayProfile();
 
-// display listings by user
+// Display listings by user
 async function displayListings() {
     const listings = await fetchListingsByUser();
 
-    if (listings) {
-        const listingsContainer = document.getElementById('listingsContainer');
+    const listingsContainer = document.getElementById('listingsContainer');
+
+    if (listings && listings.length >0) {
         const listingTemplate = document.getElementById('listingTemplate');
 
         listings.forEach(listing => {
@@ -42,22 +43,26 @@ async function displayListings() {
             const listingLink = listingElement.querySelector('#listingLink');
             listingLink.href = `../listing/singleListing.html?id=${listing.id}`;
 
-            const image = listingElement.querySelector('#listingImage');
-            if (listing.media && listing.media.length > 0) {
-                image.src = listing.media[0].url;
-                image.alt = listing.media[0].alt;
-            }
-
             const title = listingElement.querySelector('#listingTitle');
             title.textContent = listing.title;
 
             listingsContainer.appendChild(listingElement);
         });
+    } else {
+        listingsContainer.classList.remove('grid', 'grid-cols-3');
+        listingsContainer.classList.add('flex', 'justify-center', 'items-center',);
+
+        listingsContainer.innerHTML = `
+        <p class="text-center text-customWhite">
+            You have no listings yet, 
+            <a href="../../../profile/create.html" class="text-blue-500 underline">create one here.</a>
+        </p>
+    `;
     }
 }
 displayListings();
 
-// modal for updating avatar
+// Modal for updating avatar
 document.getElementById('editAvatarBtn').addEventListener('click', () => {
     const modal = document.getElementById('editAvatarModal');
     modal.classList.remove('hidden');
@@ -83,6 +88,7 @@ document.getElementById('submitAvatarBtn').addEventListener('click', () => {
     }
 });
 
-// call the updated login/logout functions
+// Call the updated login/logout functions
 updateLogin();
 logoutHandler();
+profileLogout();

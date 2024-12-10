@@ -1,10 +1,10 @@
-import { updateLogin, logoutHandler } from '../auth/authHelpers.js';
+import { updateLogin, logoutHandler, loggedIn } from '../auth/authHelpers.js';
 import { getBidderHistory } from '../../api/bid/bidHistory.js';
 import { startCountdown } from './countdownTimer.js';
 import { singleListing } from '../../api/listings/singleListing.js';
 import { profileData } from '../../api/profile/profileData.js';
 
-// display single listing
+// Display single listing
 async function displaySingleListing() {
     const listing = await singleListing();
 
@@ -29,6 +29,11 @@ async function displaySingleListing() {
         const title = container.querySelector('#singleListingTitle');
         title.textContent = listing.title.toUpperCase();
 
+        const created = container.querySelector('#created');
+        created.textContent = listing.created.toUpperCase();
+        const createdDate = new Date (listing.created);
+        created.textContent = createdDate.toLocaleDateString();
+
         const description = container.querySelector('#singleListingDescription');
         description.innerHTML = `<span class="font-semibold">Description:</span> ${
             listing.description.charAt(0).toUpperCase() + listing.description.slice(1).toLowerCase()
@@ -39,7 +44,6 @@ async function displaySingleListing() {
 
         const bids = container.querySelector('#bids');
         bids.innerHTML = `<span class="font-semibold">Bids:</span> ${listing._count.bids || 0}`;
-
 
         const tagsContainer = container.querySelector('#singleListingTags');
         if (tagsContainer) {
@@ -57,6 +61,7 @@ async function displaySingleListing() {
             } else {
                 const noTagsElement = document.createElement('span');
                 noTagsElement.textContent = 'No tags';
+                noTagsElement.classList.add('font-normal');
                 tagsContainer.appendChild(noTagsElement);
             }
         }
@@ -90,6 +95,27 @@ async function displayBidderHistory() {
     }
 }
 displayBidderHistory()
+
+// Check if logged in to place a bid
+const bidBtn = document.getElementById('place-bid-btn');
+if (loggedIn()) {
+    bidBtn.removeAttribute('disabled');
+}
+
+// Check if user is logged for going to profile page and create listing
+const profileBtn = document.querySelector('.profileBtn');
+const createBtn = document.querySelector('.createBtn');
+if (profileBtn && createBtn) {
+    [profileBtn, createBtn].forEach(button => {
+        button.addEventListener('click', e => {
+            if (!loggedIn()) {
+                e.preventDefault();
+                alert('You need to be logged in. Click OK to go to login page');
+                window.location.href = "../account/auth.html";
+            }
+        });
+    });
+}
 
 // Display profile data in header
 async function displayProfile() {

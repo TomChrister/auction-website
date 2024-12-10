@@ -1,10 +1,10 @@
-// check if user is logged in
+// Check if user is logged in
 export function loggedIn() {
     const accessToken = sessionStorage.getItem('accessToken');
     return accessToken !== null;
 }
 
-// update login/logout anchor tag
+// Update login/logout anchor tag in header
 export function updateLogin() {
     const loginAnchor = document.getElementById('loginAnchor');
     if (loginAnchor) {
@@ -18,7 +18,7 @@ export function updateLogin() {
     }
 }
 
-// log out function
+// Log out function
 export function logOut(event) {
     if (event) event.preventDefault();
     sessionStorage.removeItem('accessToken');
@@ -26,7 +26,7 @@ export function logOut(event) {
     window.location.href = '../../../../index.html';
 }
 
-// logout functionality if logged in
+// Logout functionality if logged in
 export function logoutHandler() {
     const logoutBtn = document.getElementById('loginAnchor');
     if (logoutBtn) {
@@ -35,5 +35,28 @@ export function logoutHandler() {
                 logOut(event);
             }
         });
+    }
+}
+
+// Logout function for profile page
+export function profileLogout() {
+    const profileLogoutBtn = document.getElementById('logoutBtn');
+    if (profileLogoutBtn) {
+        profileLogoutBtn.addEventListener('click', function (event) {
+            if (loggedIn()) {
+                logOut(event);
+            }
+        });
+    }
+}
+
+// Show or hide profile elements if logged in or not
+export function profileVisibility() {
+    const profileDropdown = document.querySelector('.profileDropdown');
+
+    if (loggedIn()) {
+        profileDropdown.classList.remove('hidden');
+    } else {
+        profileDropdown.classList.add('hidden');
     }
 }

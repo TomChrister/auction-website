@@ -12,16 +12,16 @@
     <script src="https://kit.fontawesome.com/fe924a0d6e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
-<body>
+<body data-theme="dark" class="bg-customBlue">
 
 <header>
-  <div class="navbar px-8 py-4">
+  <div class="px-4 py-4 navbar sm:px-8">
     <div class="flex-1">
-      <a href="../index.html" class="btn btn-neutral text-xl text-white">
+      <a href="../index.html" class="text-xl text-white btn btn-neutral bg-customDark">
         <p class="font-normal font-parkinsans">BidWise</p>
       </a>
     </div>
-    <div class="flex-none gap-4 btn btn-neutral">
+    <div class="flex-none gap-4 btn btn-neutral bg-customDark">
       <div class="dropdown dropdown-end">
         <div id="profile" class="flex flex-col items-baseline gap-1">
           <p id="nameHeader" class="text-white"></p>
@@ -29,16 +29,16 @@
         </div>
       </div>
       <div class="dropdown dropdown-end">
-        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar p-[6px]">
           <div class="w-10 rounded-full">
-            <img src="" id="avatar" alt="User  Avatar"/>
+            <img src="../assets/icons/user.svg" alt="User avatar" id="avatar"/>
           </div>
         </div>
-        <ul tabindex="0" class="menu menu-sm dropdown-content bg-gray-600 rounded-box z-[1] mt-3 w-52 p-2 shadow text-white">
-          <li>
-            <a href="../profile/index.html" class="justify-between">Profile<span class="flex py-1 px-3 text-sm text-green-300 rounded-full border border-green-300 leading-[0.75rem] animate-pulse">New</span></a>
+        <ul tabindex="0" class="mt-3 w-52 bg-gray-600 p-2 text-white shadow menu menu-sm dropdown-content rounded-box z-[1]">
+          <li class="profileBtn">
+            <a href="../profile/index.html" class="justify-between">Profile<span class="flex animate-pulse rounded-full border border-green-300 px-3 py-1 text-sm text-green-300 leading-[0.75rem]">New</span></a>
           </li>
-          <li><a href="../profile/create.html">Create listing</a></li>
+          <li class="createBtn"><a href="../profile/create.html">Create listing</a></li>
           <li><a id="loginAnchor" href="../account/auth.html">Logout</a></li>
         </ul>
       </div>
@@ -46,71 +46,71 @@
   </div>
 </header>
 
-<div class="flex flex-col lg:items-center font-montserrat">
-  <a href="../index.html" class="inline-block w-auto lg:self-start">
-    <div class="px-11 pt-5">
-      <p class="flex items-center gap-2"><i class="ph ph-arrow-left text-xl"></i>Back to feed</p>
+<div class="flex flex-col pb-16 font-montserrat lg:items-center">
+  <a href="../index.html" class="inline-block pb-4 w-auto max-w-max lg:self-start">
+    <div class="pt-5 pr-4 pl-2 text-customWhite sm:px-16">
+      <p class="flex max-w-max items-center gap-2 rounded-lg p-2 hover:bg-customDark"><i class="text-xl ph ph-arrow-left"></i>Back to feed</p>
     </div>
   </a>
-  <div id="singleListingContainer" class="flex flex-row flex-grow justify-center items-start gap-4 p-16">
+  <div id="singleListingContainer" class="flex flex-grow flex-row items-start justify-center gap-4 p-4 sm:p-16">
     <div class="flex-shrink-0">
       <div class="flex justify-between pb-5">
         <div>
-          <h2 id="singleListingTitle" class="text-2xl"></h2>
-          <p id="created"></p>
+          <h2 id="singleListingTitle" class="text-2xl text-customWhite font-medium"></h2>
+          <p id="created" class="text-customWhite"></p>
         </div>
         <div class="flex items-center gap-2">
-          <p class="flex items-center justify-center h-8 w-20 border border-green-600 rounded-md gap-2 text-green-600 group hover:bg-green-600 cursor-pointer hover:text-white">
-            <i class="ph ph-share-fat text-green-600 group-hover:text-white"></i>Share
+          <p class="flex h-8 w-20 cursor-pointer items-center justify-center gap-2 rounded-md border border-green-600 text-green-600 group hover:bg-green-600 hover:text-white">
+            <i class="text-green-600 ph ph-share-fat group-hover:text-white"></i>Share
           </p>
-          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" class="fill-transparent stroke-red-500 hover:fill-red-500 stroke-2 cursor-pointer" viewBox="0 0 24 24">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" class="cursor-pointer fill-transparent stroke-red-500 stroke-2 hover:fill-red-500" viewBox="0 0 24 24">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
           </svg>
         </div>
       </div>
-      <img id="singleListingImage" src="" alt="Listing Image" class="w-[44rem] h-[24rem] object-cover rounded-lg">
+      <img id="singleListingImage" src="" alt="Listing Image" class="rounded-lg object-cover shadow-md shadow-black w-[44rem] h-[24rem]">
     </div>
 
-    <div class="flex-grow mb-12 sm: w-full">
-      <div data-theme="light" class="listing flex flex-col gap-4">
-        <div class="flex flex-col gap-2.5 rounded-md bg-gray-200 px-3 py-2">
+    <div class="mb-12 w-full flex-grow bg-customBlue">
+      <div class="flex flex-col gap-4 listing">
+        <div class="flex flex-col rounded-md px-3 py-2 shadow-md shadow-black bg-customDark text-customWhite gap-2.5">
           <p class="font-semibold">Auction details</p>
           <p id="bids">Bids: </p>
-          <p id="endsAt"> </p>
+          <p id="endsAt"></p>
           <div class="flex flex-col gap-2.5">
             <label for="bid-amount"></label>
-            <input type="number" id="bid-amount" placeholder="Enter your bid" class="rounded pl-2 h-8">
-            <div class="buttons flex flex-col justify-between gap-4 pt-2 sm:flex-row">
-              <button id="place-bid-btn" class="btn btn-sm btn-info rounded-lg h-8 w-44 text-white">Place a bid</button>
-              <button class="btn btn-sm btn-outline btn-info bg-white rounded-lg h-8 w-44">Follow</button>
+            <input type="number" id="bid-amount" placeholder="Enter your bid" class="h-8 rounded border px-2 bg-customWhite placeholder-opacity-80 placeholder-customDark text-customDark border-accent focus:outline-accent focus:border-accent focus:ring-accent focus:ring-2">
+            <div class="flex flex-col justify-between gap-4 pt-2 buttons sm:flex-row">
+              <button id="place-bid-btn" disabled class="h-8 w-44 rounded-lg text-white btn btn-sm btn-accent disabled:text-customDark disabled:bg-gray-500">Place a bid</button>
+              <button class="h-8 w-44 rounded-lg bg-customWhite btn btn-sm btn-accent text-customBlue hover:text-customWhite">Follow</button>
             </div>
           </div>
         </div>
 
-        <div class="flex flex-col gap-2.5 bg-gray-200 rounded px-3 py-2">
+        <div class="flex flex-col rounded px-3 py-2 shadow-md shadow-black bg-customDark text-customWhite gap-2.5">
           <p class="font-semibold">Product details</p>
           <p id="singleListingDescription">Description: </p>
           <p id="singleListingTags" class="font-semibold">Category: </p>
         </div>
 
-        <div class="collapse bg-gray-200 rounded-md">
+        <div class="rounded-md shadow-md shadow-black bg-customDark text-customWhite collapse">
           <label for="checkbox1"></label>
           <input class="collapse-checkbox" type="checkbox" id="checkbox1"/>
-          <div class="font-semibold collapse-title text-base px-3 py-2 flex justify-between items-center">
+          <div class="flex items-center justify-between px-3 py-2 text-base font-semibold collapse-title">
             Bid history
-            <i class="collapse-icon fa-solid fa-caret-down mr-2"></i>
+            <i class="mr-2 collapse-icon fa-solid fa-caret-down"></i>
           </div>
           <div class="collapse-content">
             <ul id="bidderHistory" class="flex flex-col gap-3"></ul>
           </div>
         </div>
 
-        <div class="collapse bg-gray-200 rounded-md">
+        <div class="rounded-md shadow-md shadow-black bg-customDark text-customWhite collapse">
           <label for="checkbox2"></label>
           <input class="collapse-checkbox" type="checkbox" id="checkbox2"/>
-          <div class="font-semibold collapse-title text-base px-3 py-2 flex justify-between items-center">
+          <div class="flex items-center justify-between px-3 py-2 text-base font-semibold collapse-title">
             Terms and conditions
-            <i class="collapse-icon fa-solid fa-caret-down mr-2"></i>
+            <i class="mr-2 collapse-icon fa-solid fa-caret-down"></i>
           </div>
           <div class="collapse-content">
             <div class="flex flex-col gap-2">
@@ -130,7 +130,7 @@
   </div>
 </div>
 
-<footer class="footer footer-center bg-base-200 text-base-content rounded p-10 font-parkinsans">
+<footer class="rounded p-10 footer footer-center bg-base-200 text-base-content font-parkinsans text-customWhite">
   <nav class="grid grid-flow-col gap-4">
     <a class="link link-hover">About us</a>
     <a class="link link-hover">Contact</a>
@@ -139,24 +139,13 @@
   </nav>
   <nav>
     <div class="grid grid-flow-col gap-4">
-      <a>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-        </svg>
-      </a>
-      <a>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-          <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-        </svg>
-      </a>
-      <a>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-          <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-        </svg>
-      </a>
+      <i class="text-3xl text-amber-500 ph ph-instagram-logo"></i>
+      <i class="text-3xl text-blue-800 ph ph-x-logo"></i>
+      <i class="text-3xl text-lime-500 ph ph-github-logo"></i>
     </div>
   </nav>
   <aside>
-    <p>Copyright © - All right reserved by ACME Industries Ltd</p>
+    <p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
   </aside>
 </footer>
 

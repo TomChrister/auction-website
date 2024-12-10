@@ -7,47 +7,47 @@
     <link href="/src/styles/input.css" rel="stylesheet">
     <script src="/src/ui/listings/create.js" type="module" defer></script>
 </head>
-<body>
+<body data-theme="dark" class="bg-customBlue min-h-screen">
 
 <header>
-    <div class="navbar px-8 py-4">
+    <div class="px-4 py-4 navbar sm:px-8">
         <div class="flex-1">
-            <a href="../index.html" class="btn btn-neutral text-xl text-white">
+            <a href="../index.html" class="text-xl text-white btn btn-neutral bg-customDark">
                 <p class="font-normal font-parkinsans">BidWise</p>
             </a>
         </div>
     </div>
 </header>
 
-<div class="mx-8 sm:w-[36rem] flex justify-center flex-col">
-    <h1 class="text-xl py-3">Create listing</h1>
+<div class="mx-4 flex flex-col justify-center text-customWhite sm:w-[36rem] sm:mx-8 md:mx-auto">
+    <h1 class="py-3 text-xl">Create listing</h1>
 
     <form id="createForm" class="flex flex-col gap-3">
-        <label class="input input-bordered input-info flex items-center gap-2">
+        <label class="flex items-center gap-2 input input-bordered input-info">
             Title
             <input id="title" type="text" class="grow" placeholder="Title"/>
         </label>
 
         <label for="description" class="flex">
-            <textarea id="description" class="textarea textarea-info w-full" placeholder="Bio"></textarea>
+            <textarea id="description" class="w-full textarea textarea-info" placeholder="Bio"></textarea>
         </label>
 
-        <label id="tags" class="input input-bordered input-info flex items-center gap-2">
+        <label id="tags" class="flex items-center gap-2 input input-bordered input-info">
             Tags
             <input type="text" class="grow" placeholder="Tags"/>
         </label>
 
-        <label id="media" class="input input-bordered input-info flex items-center gap-2">
+        <label id="media" class="flex items-center gap-2 input input-bordered input-info">
             Image URL
             <input type="text" class="grow" placeholder="URL link to image"/>
         </label>
 
-        <label id="endsAt" class="input input-bordered input-info flex items-center gap-2">
+        <label id="endsAt" class="flex items-center gap-2 input input-bordered input-info">
             <input type="datetime-local" class="grow" placeholder="Ends at"/>
-            <span class="flex justify-center p-1 rounded-[20px] w-[76px] h-[26px] items-center text-white badge-info">Ends at:</span>
+            <span class="flex items-center justify-center p-1 text-white rounded-[20px] w-[76px] h-[26px] badge-info">Ends at:</span>
         </label>
 
-        <button class="btn btn-success text-white" type="submit">Publish listing</button>
+        <button class="text-white btn btn-success" type="submit">Publish listing</button>
     </form>
 </div>
 

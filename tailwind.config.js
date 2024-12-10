@@ -15,10 +15,17 @@ module.exports = {
                 kantumruy: ['Kantumruy', 'sans-serif'],
                 montserrat: ['Montserrat', 'sans-serif'],
             },
+            colors: {
+                customBlue: '#2a3643',
+                customDark: '#1d232a',
+                customWhite: '#ffffffd6',
+                customOrange: '#db7a24'
+            },
         },
     },
     plugins: [
         require('daisyui'),
+
     ],
     daisyui: {
         themes: false,

@@ -22,7 +22,7 @@ export async function fetchSearch(query, listingId) {
             return { searchResults: searchData.listings, listingDetails: listingData };
         }
 
-        return { searchResults: searchData.data }; // Return only search results if no listingId is provided
+        return { searchResults: searchData.data };
     } catch (error) {
         console.error('Error:', error);
         return { searchResults: [], listingDetails: null };
