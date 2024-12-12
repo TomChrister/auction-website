@@ -6,19 +6,25 @@ export async function profileData() {
     const name = localStorage.getItem('name');
     const token = localStorage.getItem('accessToken');
     const url = `${API_PROFILES}/${name}`;
+
     if (!token) {
         console.error('No access token found in session storage.');
         return null;
     }
 
+    console.log("Token:", token);
+    console.log("API Key:", API_KEY);
+
+    // Create and append headers
+    const headers = new Headers();
+    headers.append("Authorization", `Bearer ${token}`);
+    headers.append("Content-Type", "application/json");
+    headers.append("X-Noroff-API-Key", API_KEY);
+
     try {
         const response = await fetch(url, {
             method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json',
-                'X-Noroff-API-Key': API_KEY,
-            }
+            headers: headers, // Pass Headers instance
         });
 
         if (!response.ok) {
@@ -33,3 +39,4 @@ export async function profileData() {
         return null;
     }
 }
+
