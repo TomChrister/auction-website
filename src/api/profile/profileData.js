@@ -16,8 +16,8 @@ export async function profileData() {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${token}`,
-                'X-Noroff-API-Key': API_KEY,
                 'Content-Type': 'application/json',
+                'X-Noroff-API-Key': API_KEY,
             }
         });
 
