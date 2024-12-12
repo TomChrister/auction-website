@@ -1,6 +1,6 @@
 export const API_BASE = 'https://v2.api.noroff.dev';
 
-export const API_KEY = '2e6d18fe-72d7-4354-9e02-38fe4d463f8c';
+export const API_KEY = import.meta.env.VITE_API_KEY;
 
 export const API_BASE_AUCTION = 'https://v2.api.noroff.dev/auction';
 
