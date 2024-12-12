@@ -2,8 +2,8 @@
 import { authHeaders } from '../../utils/headers.js';
 
 export async function profileData() {
-    const name = sessionStorage.getItem('name');
-    const token = sessionStorage.getItem('accessToken');
+    const name = localStorage.getItem('name');
+    const token = localStorage.getItem('accessToken');
     const url = `https://v2.api.noroff.dev/auction/profiles/${name}`;
 
     if (!token) {

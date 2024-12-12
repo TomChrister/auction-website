@@ -17,8 +17,8 @@ loginBtn.addEventListener('click', async function () {
         const data = await loginUser(mailValue, pwdValue);
 
         alert(`User ${data.data.name} successfully logged in!`);
-        sessionStorage.setItem('name', data.data.name);
-        sessionStorage.setItem('accessToken', data.data.accessToken);
+        localStorage.setItem('name', data.data.name);
+        localStorage.setItem('accessToken', data.data.accessToken);
 
         window.location.href = '../../../index.html';
     } catch (error) {

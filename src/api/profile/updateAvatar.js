@@ -2,8 +2,8 @@
 import { authHeaders } from '../../utils/headers.js';
 
 export async function updateAvatar(avatarUrl) {
-    const name = sessionStorage.getItem('name');
-    const token = sessionStorage.getItem('accessToken');
+    const name = localStorage.getItem('name');
+    const token = localStorage.getItem('accessToken');
 
     if (!token || !name) {
         console.error('No access token or name found in session storage.');
