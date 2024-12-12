@@ -32,7 +32,7 @@ The auction website provides a platform for users to list items for auction and 
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/auction-website.git
+    git clone https://github.com/TomChrister/auction-website.git
     cd auction-website
     ```
 
@@ -70,7 +70,7 @@ This project uses the [Noroff Auction API](https://api.noroff.dev) to manage use
 
 ### Deployment 📱
 
-The project is hosted on [Vercel](#) (link to the live site here).
+The project is hosted on Vercel (bidwise-auction.vercel.app.
 
 ---
 
