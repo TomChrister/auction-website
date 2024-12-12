@@ -3,8 +3,8 @@ import { API_BASE_AUCTION } from '../../utils/contants.js';
 import { authHeaders } from '../../utils/headers.js';
 
 export async function fetchListingsByUser() {
-    const name = sessionStorage.getItem('name');
-    const token = sessionStorage.getItem('accessToken');
+    const name = localStorage.getItem('name');
+    const token = localStorage.getItem('accessToken');
     const url = `${API_BASE_AUCTION}/profiles/${name}/listings`;
 
     if (!name) {

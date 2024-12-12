@@ -6,7 +6,7 @@ export default defineConfig({
         port: 3000,
     },
     build: {
-        outDir: 'dist', // Explicitly define the output directory
+        outDir: 'dist',
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
@@ -17,5 +17,4 @@ export default defineConfig({
             },
         },
     },
-
 });
