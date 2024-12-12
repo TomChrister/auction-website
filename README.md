@@ -70,7 +70,7 @@ This project uses the [Noroff Auction API](https://api.noroff.dev) to manage use
 
 ### Deployment 📱
 
-The project is hosted on Vercel (bidwise-auction.vercel.app)
+The project is hosted on Vercel [Bidwise Auction](https://bidwise-auction.vercel.app)
 
 ---
 
