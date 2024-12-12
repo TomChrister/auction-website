@@ -1,11 +1,11 @@
 // Fetch profile data
-import { authHeaders } from '../../utils/headers.js';
+import { API_KEY } from '../../utils/contants.js';
+import { API_PROFILES } from '../../utils/contants.js';
 
 export async function profileData() {
     const name = localStorage.getItem('name');
     const token = localStorage.getItem('accessToken');
-    const url = `https://v2.api.noroff.dev/auction/profiles/${name}`;
-
+    const url = `${API_PROFILES}/${name}`;
     if (!token) {
         console.error('No access token found in session storage.');
         return null;
@@ -14,7 +14,11 @@ export async function profileData() {
     try {
         const response = await fetch(url, {
             method: 'GET',
-            headers: authHeaders()
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'X-Noroff-API-Key': API_KEY,
+                'Content-Type': 'application/json',
+            }
         });
 
         if (!response.ok) {

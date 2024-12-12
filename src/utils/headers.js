@@ -7,7 +7,7 @@ export const defaultHeaders = {
 
 // Auth required
 export function authHeaders() {
-    const token = sessionStorage.getItem('accessToken');
+    const token = localStorage.getItem('accessToken');
     return {
         Authorization: `Bearer ${token}`,
         'X-Noroff-API-KEY': API_KEY,
