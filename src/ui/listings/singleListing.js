@@ -21,7 +21,7 @@ async function displaySingleListing() {
                 image.src = listing.media[0].url;
                 image.alt = listing.media[0].alt || 'Listing image';
             } else {
-                image.src = '../../../assets/images/defaultImage.png';
+                image.src = '/assets/images/defaultImage.png';
                 image.alt = 'DefaultImage';
             }
         }
