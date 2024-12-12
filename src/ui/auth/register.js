@@ -1,13 +1,13 @@
 import { registerUser } from '../../api/auth/register.js';
 
-//  elements
+//  Elements
 const registerFormElement = document.getElementById('register');
 const registerUsername = document.getElementById('registerUsername');
 const registerEmail = document.getElementById('registerEmail');
 const registerPassword = document.getElementById('registerPassword');
 const registerBtn = document.getElementById('registerBtn');
 
-// event listener for the register button
+// Event listener for the register button
 registerBtn.addEventListener('click', async function () {
     const userName = registerUsername.value;
     const email = registerEmail.value;
@@ -25,7 +25,7 @@ registerBtn.addEventListener('click', async function () {
     }
 });
 
-// toggle between forms
+// Toggle between forms
 const registerLink = document.getElementById('registerLink');
 const loginLink = document.getElementById('loginLink');
 

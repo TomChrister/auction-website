@@ -1,4 +1,4 @@
-// countdownTimer
+// Countdown timer
 export function startCountdown(endDate, element, showFullCountdown = true) {
     if (!endDate || !element) {
         element.textContent = 'No end date available';

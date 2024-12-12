@@ -16,19 +16,20 @@ searchInput.addEventListener('input', async function () {
     // Starts searching once the search hits 3 characters
     if (query.length > 2) {
         const {searchResults} = await fetchSearch(query, listingId);
-
         if (Array.isArray(searchResults)) {
             resultsDiv.innerHTML = '';
-
             searchResults.forEach(listing => {
                 const listingDiv = document.createElement('div');
-                listingDiv.className = 'listing-card';
+                listingDiv.className = 'listing-card m-2';
                 listingDiv.innerHTML = `
-                    <div> ${
+                     <div>${
                     listing.media.length > 0
                         ? `<img src='${listing.media[0].url}' alt='${listing.media[0].alt || listing.title}' class='media-img'>`
                         : 'No media available'
                     }</div>
+                    <div class="flex items-center px-3 mx-3 mt-2 bg-customWhite text-customDark rounded">
+                        <p><span class="font-semibold">Ends in: </span>Check listing page</p>
+                    </div>
                     <div class="px-3 pt-2">
                     <h2 class='text-xl font-medium capitalize'>${listing.title}</h2>
                     <p class='capitalize'>${listing.description}</p>
@@ -46,7 +47,6 @@ searchInput.addEventListener('input', async function () {
         } else {
             console.error('searchResults is not an array', searchResults);
         }
-
     } else {
         resultsDiv.innerHTML = '';
         displayListings();

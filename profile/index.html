@@ -50,7 +50,9 @@
 
 <div class="mt-6 flex justify-center px-5 font-montserrat sm:justify-between sm:px-8 lg:px-52">
     <h1 class="text-3xl font-bold text-customWhite">BidWise Account</h1>
-    <button id="logoutBtn" class="hidden text-white btn btn-accent sm:flex">Logout</button>
+    <a href="create.html">
+        <button class="hidden text-white btn bg-amber-600 hover:bg-amber-700 sm:flex">Create listing</button>
+    </a>
 </div>
 <div class="px-4 sm:px-8 lg:px-52">
     <div class="my-4 border-b-2 border-gray-400"></div>
@@ -60,45 +62,50 @@
     <div class="flex flex-col gap-4">
         <img class="h-40 w-40 self-center rounded-full object-cover" src="" id="avatar" alt="User Avatar"/>
         <p class="text-center font-semibold text-customWhite" id="email"></p>
-        <button id="editAvatarBtn" class="border-none bg-amber-600 text-white btn sm:w-60">Edit avatar</button>
+        <button id="editAvatarBtn" class="border-none bg-amber-600 text-white btn hover:bg-amber-700 sm:w-60">Edit avatar</button>
         <div id="editAvatarModal" class="hidden flex-col items-start gap-2">
             <label for="avatarUrlInput"></label>
             <p class="text-customWhite">1. Add new image URL</p>
-            <input class="w-full rounded-md border px-2 border-info" type="text" id="avatarUrlInput" placeholder="Enter new avatar URL"/>
+            <input class="w-full rounded-md border px-2 py-1 border-info" type="text" id="avatarUrlInput" placeholder="Enter new avatar URL"/>
+            <p class="text-sm">Please use a link to a live and<br> accessible image with <span class="text-green-600">https://</span></p>
             <p class="text-customWhite">2. Update avatar</p>
-            <button id="submitAvatarBtn" class="flex h-8 w-32 items-center justify-center rounded-md text-white bg-success">Update avatar</button>
-            <button id="cancelAvatarBtn" class="flex h-8 w-32 items-center justify-center rounded-md text-white bg-error">Cancel</button>
+            <button id="submitAvatarBtn" class="flex h-8 w-32 items-center justify-center rounded-md text-white bg-green-700 hover:bg-green-800">Update avatar</button>
+            <button id="cancelAvatarBtn" class="flex h-8 w-32 items-center justify-center rounded-md text-white bg-red-500 hover:bg-red-600">Cancel</button>
         </div>
     </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
+
+    <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-4">
             <p class="text-3xl font-semibold text-customWhite">Account information</p>
             <p class="text-customWhite">Manage your personal information, see your credits, listings and wins</p>
         </div>
 
         <div class="grid grid-cols-2 gap-6 card-container text-customWhite">
-            <div class="flex h-20 justify-between rounded-md border p-2 border-accent bg-customDark">
+            <div class="flex h-20 justify-between rounded-md border p-2 border-amber-600 bg-customDark">
                 <div class="flex flex-col justify-between">
                     <p class="font-semibold">Name</p>
                     <p id="name"></p>
                 </div>
                 <i class="text-2xl ph ph-user-circle text-customWhite"></i>
             </div>
-            <div class="flex h-20 justify-between rounded-md border p-2 border-accent bg-customDark">
+
+            <div class="flex h-20 justify-between rounded-md border p-2 border-amber-600 bg-customDark">
                 <div class="flex flex-col justify-between">
                     <p class="font-semibold">Credits</p>
                     <p id="credits"></p>
                 </div>
                 <i class="text-2xl ph ph-coins text-customWhite"></i>
             </div>
-            <div class="flex h-20 justify-between rounded-md border p-2 border-accent bg-customDark">
+
+            <div class="flex h-20 justify-between rounded-md border p-2 border-amber-600 bg-customDark">
                 <div class="flex flex-col justify-between">
                     <p class="font-semibold">Listings</p>
                     <p id="listings"></p>
                 </div>
                 <i class="text-2xl ph ph-article text-customWhite"></i>
             </div>
-            <div class="flex h-20 justify-between rounded-md border p-2 border-accent bg-customDark">
+
+            <div class="flex h-20 justify-between rounded-md border p-2 border-amber-600 bg-customDark">
                 <div class="flex flex-col justify-between">
                     <p class="font-semibold">Wins</p>
                     <p id="wins"></p>
@@ -109,15 +116,14 @@
     </div>
 </div>
 
-<div class="flex flex-col items-center gap-4 py-4 pb-12 font-montserrat text-customWhite">
+<div class="flex flex-col items-center gap-4 py-12 pb-12 font-montserrat text-customWhite">
     <h1 class="text-xl pb-4 font-semibold">Your listings</h1>
     <div id="listingsContainer" class="grid grid-cols-1 items-center justify-center gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-        <div id="listingTemplate" class="hidden h-20 w-80 rounded-md py-7 pl-4 bg-customDark shadow-sm shadow-black">
+        <div id="listingTemplate" class="hidden h-20 w-80 rounded-md py-7 pl-4 bg-customDark shadow-sm shadow-black hover:scale-95 duration-300">
             <a id="listingLink" href="#" class="block">
                 <h2 class="card-title">
                     <span id="listingTitle"></span>
-                    <div id="listingBadge" class="flex justify-center rounded-2xl p-1 text-xs text-white w-[52px] h-[25] badge-accent">NEW
-                    </div>
+                    <div id="listingBadge" class="flex justify-center rounded-2xl p-1 text-xs text-white w-[52px] h-[25] badge-success animate-pulse">NEW</div>
                 </h2>
             </a>
         </div>
@@ -133,7 +139,7 @@
     </nav>
     <nav>
         <div class="grid grid-flow-col gap-4">
-            <i class="text-3xl text-amber-500 ph ph-instagram-logo"></i>
+            <i class="text-3xl text-amber-600 ph ph-instagram-logo"></i>
             <i class="text-3xl text-blue-800 ph ph-x-logo"></i>
             <i class="text-3xl text-lime-500 ph ph-github-logo"></i>
         </div>

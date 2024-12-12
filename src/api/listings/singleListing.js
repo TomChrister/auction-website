@@ -1,9 +1,9 @@
-// fetch single listing
+// Fetch single listing
 import { API_BASE_LISTINGS } from '../../utils/contants.js';
 import { defaultHeaders } from '../../utils/headers.js';
 
 export async function singleListing() {
-    // get id from the listing
+    // Get id from the listing
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
 

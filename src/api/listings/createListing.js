@@ -1,4 +1,4 @@
-// create listings
+// Create listings
 import { API_BASE_LISTINGS } from '../../utils/contants.js';
 import { authHeaders } from '../../utils/headers.js';
 

@@ -1,7 +1,7 @@
-import {API_BASE_LISTINGS} from '../../utils/contants.js';
-import {authHeaders} from '../../utils/headers.js';
+import { API_BASE_LISTINGS } from '../../utils/contants.js';
+import { authHeaders } from '../../utils/headers.js';
 
-// fetch bidder history
+// Fetch bidder history
 export async function getBidderHistory() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');

@@ -1,8 +1,6 @@
 import { createListing } from '../../api/listings/createListing.js';
-import { profileData } from '../../api/profile/profileData.js';
-import { updateLogin, logoutHandler } from '../auth/authHelpers.js';
 
-// create listing submit function
+// Create listing submit function
 document.getElementById('createForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -12,7 +10,7 @@ document.getElementById('createForm').addEventListener('submit', async (event) =
     const media = document.getElementById('media').querySelector('input').value.trim();
     const endsAtInput = document.getElementById('endsAt').querySelector('input').value.trim();
 
-    // check if date-time format is valid
+    // Check if date-time format is valid
     const isoFormatRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
 
     let endsAt;
@@ -46,22 +44,3 @@ document.getElementById('createForm').addEventListener('submit', async (event) =
         console.error('Failed to create listing:', error.message);
     }
 });
-
-// display profile data in header
-async function displayProfile() {
-    const profile = await profileData();
-
-    if (profile) {
-        document.getElementById('name').textContent = profile.name;
-        document.getElementById('credits').textContent = `Credits: ${profile.credits}`;
-
-        const avatar = document.getElementById('avatar');
-        avatar.src = profile.avatar.url;
-        avatar.alt = profile.avatar.alt;
-    }
-}
-displayProfile();
-
-// call updated login/logout functions
-updateLogin();
-logoutHandler();

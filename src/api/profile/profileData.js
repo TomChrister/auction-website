@@ -1,4 +1,4 @@
-// fetch profile data
+// Fetch profile data
 import { authHeaders } from '../../utils/headers.js';
 
 export async function profileData() {
