@@ -26,7 +26,7 @@ export function displayListings() {
             <div> ${
             listing.media.length > 0
                 ? `<img src='${listing.media[0].url}' alt='${listing.media[0].alt || listing.title}' class='media-img'>`
-                : '<img src="../../../assets/images/defaultImage.png" alt="defaultImage" class="media-img">'
+                : '<img src="../../../public/assets/images/defaultImage.png" alt="defaultImage" class="media-img">'
             }</div>
             <div class="flex items-center px-3 mx-3 mt-2 bg-customWhite text-customDark rounded">
                 <span id="countdown-${listing.id}"></span>
