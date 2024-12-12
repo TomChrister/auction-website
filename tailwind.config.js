@@ -12,7 +12,6 @@ module.exports = {
         extend: {
             fontFamily: {
                 parkinsans: ['Parkinsans', 'sans-serif'],
-                kantumruy: ['Kantumruy', 'sans-serif'],
                 montserrat: ['Montserrat', 'sans-serif'],
             },
             colors: {

@@ -10,7 +10,6 @@ html {
     scroll-behavior: smooth;
 }
 
-
 .listing-card {
     background-color: #a5a1a1;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -43,44 +42,6 @@ html {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.listing-body {
-    padding: 1rem;
-}
-
-.listing-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.badge {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.875rem;
-    border-radius: 9999px;
-}
-
-.new-badge {
-    background-color: #4f46e5;
-    color: #fff;
-}
-
-.category-badge {
-    background-color: #e5e7eb;
-    color: #4b5563;
-    border: 1px solid #d1d5db;
-    margin-right: 0.5rem;
-}
-
-.listing-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1rem;
-}
-
 .listing-card {
     padding: 0;
     width: 20rem;
@@ -91,10 +52,4 @@ html {
 
 #listingImage {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 1164px) {
-    #singleListingContainer {
-        flex-direction: column;
-    }
 }

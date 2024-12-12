@@ -1,10 +1,10 @@
-// place bid request
+// Place bid request
 import { API_BASE_LISTINGS } from '../../utils/contants.js';
 import { authHeaders } from '../../utils/headers.js';
 
-// place bid request
+// Place bid request
 export async function placeBid(amount) {
-    // get id from the listing
+    // Get id from the listing
     const params = new URLSearchParams(window.location.search);
     const idBid = params.get('id');
 

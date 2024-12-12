@@ -38,18 +38,6 @@ export function logoutHandler() {
     }
 }
 
-// Logout function for profile page
-export function profileLogout() {
-    const profileLogoutBtn = document.getElementById('logoutBtn');
-    if (profileLogoutBtn) {
-        profileLogoutBtn.addEventListener('click', function (event) {
-            if (loggedIn()) {
-                logOut(event);
-            }
-        });
-    }
-}
-
 // Show or hide profile elements if logged in or not
 export function profileVisibility() {
     const profileDropdown = document.querySelector('.profileDropdown');

@@ -1,11 +1,11 @@
 import { API_KEY } from './contants.js';
 
-// no auth required
+// No auth required
 export const defaultHeaders = {
     'Content-Type': 'application/json',
 };
 
-// auth required
+// Auth required
 export function authHeaders() {
     const token = sessionStorage.getItem('accessToken');
     return {

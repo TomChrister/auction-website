@@ -1,7 +1,7 @@
 import { API_BASE_LISTINGS } from '../../utils/contants.js';
 import { defaultHeaders } from '../../utils/headers.js';
 
-// fetchSearch.js
+// Search fetch
 export async function fetchSearch(query, listingId) {
     try {
         const searchResponse = await fetch(`${API_BASE_LISTINGS}/search?q=${encodeURIComponent(query)}`);

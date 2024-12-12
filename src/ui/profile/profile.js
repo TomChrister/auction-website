@@ -1,4 +1,4 @@
-import { updateLogin, logoutHandler, profileLogout } from '../auth/authHelpers.js';
+import { updateLogin, logoutHandler } from '../auth/authHelpers.js';
 import { fetchListingsByUser } from '../../api/listings/userListings.js';
 import { updateAvatar } from '../../api/profile/updateAvatar.js';
 import { profileData } from '../../api/profile/profileData.js';
@@ -91,4 +91,3 @@ document.getElementById('submitAvatarBtn').addEventListener('click', () => {
 // Call the updated login/logout functions
 updateLogin();
 logoutHandler();
-profileLogout();

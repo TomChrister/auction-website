@@ -61,13 +61,13 @@
         <img src="assets/images/auction.png" alt="img" class="w-72 py-8">
         <p class="pb-8 text-center">Sign up today to claim your <span class="text-accent">1000 credits</span> and start bidding on exclusive items</p>
         <div class="flex items-center gap-4">
-            <button class="rounded px-6 py-3 text-white btn btn-info">
-                <a href="#bidTitle" class="scroll-smooth">
+            <a href="#bidTitle" class="scroll-smooth">
+                <button class="rounded px-6 py-3 text-white btn btn-info">
                     Explore
-                </a>
-            </button>
+                </button>
+            </a>
             <p>Or</p>
-            <a href="account/auth.html" class="scroll-smooth rounded px-6 py-3 text-white btn btn-outline btn-accent">
+            <a href="account/auth.html" class="scroll-smooth rounded px-6 py-3 btn btn-outline btn-accent">
                 Login
             </a>
         </div>
@@ -75,12 +75,12 @@
 </div>
 
 <div class="flex flex-col justify-center font-montserrat">
-    <div class="flex py-4">
-        <h1 id="bidTitle" class="mx-auto mt-4 p-0 text-3xl font-bold text-customWhite sm:pl-[136px] sm:mx-0 sm:pt-24 sm:pr-6 lg:mt-0">
+    <div class="flex flex-col items-center py-4 sm:flex-row">
+        <h1 id="bidTitle" class="mx-auto mt-4 p-0 text-3xl font-semibold text-customWhite sm:pl-[136px] sm:mx-0 sm:pt-24 sm:pr-6 lg:mt-0">
             Bids near you
         </h1>
         <label for="searchInput"></label>
-        <input id="searchInput" type="text" placeholder="Search..." class="mt-24 hidden h-10 w-40 scroll-mt-16 bg-customWhite placeholder-opacity-80 placeholder-customDark text-customDark input input-bordered border-accent focus:outline-accent sm:block md:w-auto"/>
+        <input id="searchInput" type="text" placeholder="Search..." class="mt-4 h-10 w-64 scroll-mt-16 bg-customWhite placeholder-opacity-80 placeholder-customDark text-customDark input input-bordered border-accent focus:outline-accent sm:block sm:self-end md:w-auto"/>
     </div>
     <div id="listingsContainer" class="mx-auto grid grid-cols-1 gap-8 overflow-visible py-3 listings-container text-customWhite sm:grid-cols-2 sm:px-32 lg:grid-cols-3 xl:grid-cols-4"></div>
 </div>
