@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+import daisyui from 'daisyui';
+
+
+export default {
     content: [
         './index.html',
         './account/auth.html',
@@ -22,10 +25,7 @@ module.exports = {
             },
         },
     },
-    plugins: [
-        require('daisyui'),
-
-    ],
+    plugins: [daisyui],
     daisyui: {
         themes: false,
         darkTheme: "light",
