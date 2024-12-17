@@ -1,4 +1,4 @@
-import { updateLogin, logoutHandler, loggedIn } from '../auth/authHelpers.js';
+import { updateLogin, logoutHandler, loggedIn, profileVisibility } from '../auth/authHelpers.js';
 import { getBidderHistory } from '../../api/bid/bidHistory.js';
 import { startCountdown } from './countdownTimer.js';
 import { singleListing } from '../../api/listings/singleListing.js';
@@ -135,3 +135,4 @@ displayProfile();
 // Call the updated login/logout functions
 updateLogin();
 logoutHandler();
+profileVisibility();
