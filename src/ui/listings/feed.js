@@ -23,20 +23,20 @@ export function displayListings() {
         countdownElement.className = 'countdown-timer';
 
         listingDiv.innerHTML = `
-            <div> ${
-            listing.media.length > 0
-                ? `<img src='${listing.media[0].url}' alt='${listing.media[0].alt || listing.title}' class='media-img'>`
-                : '<img src="/assets/images/defaultImage.png" alt="defaultImage" class="media-img">'
-            }</div>
-            <div class="flex items-center px-3 mx-3 mt-2 bg-customWhite text-customDark rounded">
-                <span id="countdown-${listing.id}"></span>
-            </div>
-            <h2 class='text-xl font-semibold capitalize px-3 pt-2'>${listing.title}</h2>
-            <p class='capitalize px-3 my-1 truncate ...'>${listing.description}</p>
-            <p class="px-3 mt-1"><strong>Bids:</strong> ${listing._count.bids}</p>
-            <p class="px-3 mb-2">${listing.tags.length > 0 ? listing.tags.map(tag => tag.charAt(0).toUpperCase() + tag.slice(1)).join(' - ') : 'No Tags'}</p>
-            <div class="border-b-2 border-white opacity-50 m-3"></div> 
             <a href="../listing/singleListing.html?id=${listing.id}">
+                <div> ${
+                listing.media.length > 0
+                    ? `<img src='${listing.media[0].url}' alt='${listing.media[0].alt || listing.title}' class='media-img'>`
+                    : '<img src="/assets/images/defaultImage.png" alt="defaultImage" class="media-img">'
+                }</div>
+                <div class="flex items-center px-3 mx-3 mt-2 bg-customWhite text-customDark rounded">
+                    <span id="countdown-${listing.id}"></span>
+                </div>
+                <h2 class='text-xl font-semibold capitalize px-3 pt-2'>${listing.title}</h2>
+                <p class='capitalize px-3 my-1 truncate ...'>${listing.description}</p>
+                <p class="px-3 mt-1"><strong>Bids:</strong> ${listing._count.bids}</p>
+                <p class="px-3 mb-2">${listing.tags.length > 0 ? listing.tags.map(tag => tag.charAt(0).toUpperCase() + tag.slice(1)).join(' - ') : 'No Tags'}</p>
+                <div class="border-b-2 border-white opacity-50 m-3"></div> 
                 <p class="flex flex-row gap-2 items-center pl-3 mb-2">See listing<i class="ph ph-arrow-up-right text-base text-green-700 bg-white w-6 h-6 flex items-center justify-center rounded-full"></i></p>
             </a>
         `;
